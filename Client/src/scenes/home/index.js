@@ -47,23 +47,23 @@ const Home = () => {
    const furnitureType = ['Furnished', 'Unfurnished', 'Part Furnished'];
 
    const bookingValidation = yup.object().shape({
-      // name: yup
-      //    .string()
-      //    .min(8, 'Name must be at least 8 characters long')
-      //    .required('Name is Required'),
-      // address: yup
-      //    .string()
-      //    .min(8, 'Address must be at least 8 characters long')
-      //    .required('Address is required'),
-      // startDate: yup.string().required('Start Date is required'),
-      // endDate: yup.string().required('End Date is required'),
-      // propertyType: yup.string().required('Property Type is required'),
-      // furnitureType: yup.string().required('Furniture Type is required'),
-      // bedRoom: yup.string().required('Bed Room is required'),
-      // rentPrice: yup
-      //    .number()
-      //    .moreThan(0, 'Price must be greater than 0')
-      //    .required('Price is required'),
+      name: yup
+         .string()
+         .min(8, 'Name must be at least 8 characters long')
+         .required('Name is Required'),
+      address: yup
+         .string()
+         .min(8, 'Address must be at least 8 characters long')
+         .required('Address is required'),
+      startDate: yup.string().required('Start Date is required'),
+      endDate: yup.string().required('End Date is required'),
+      propertyType: yup.string().required('Property Type is required'),
+      furnitureType: yup.string().required('Furniture Type is required'),
+      bedRoom: yup.string().required('Bed Room is required'),
+      rentPrice: yup
+         .number()
+         .moreThan(0, 'Price must be greater than 0')
+         .required('Price is required'),
    });
 
    const onConfirm = (data) => {
@@ -359,6 +359,7 @@ const Home = () => {
                                     value={values.note}
                                     onBlur={handleBlur('note')}
                                     onChangeText={handleChange('note')}
+                                    textAlignVertical='top'
                                  />
                               </FormControl>
 

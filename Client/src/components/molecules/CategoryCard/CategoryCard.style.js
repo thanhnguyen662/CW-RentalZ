@@ -14,4 +14,14 @@ export default StyleSheet.create({
       paddingBottom: 15,
       flex: 1,
    },
+   closeIcon: {
+      position: 'absolute',
+      top: 10,
+      left: 314,
+   },
+   noteIcon: {
+      position: 'absolute',
+      top: 50,
+      left: 315,
+   },
 });
