@@ -192,6 +192,11 @@ const Home = () => {
                                        error={errors.startDate}
                                        touched={touched.startDate}
                                        minimumDate={new Date()}
+                                       maximumDate={
+                                          values.endDate !== null
+                                             ? values.endDate
+                                             : null
+                                       }
                                     />
                                     <FormControl.ErrorMessage
                                        leftIcon={
