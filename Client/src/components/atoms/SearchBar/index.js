@@ -18,7 +18,7 @@ const SearchBar = (props) => {
             searchKeyword: value,
          };
          handleOnSearch(formValues);
-      }, 400);
+      }, 1000);
    };
 
    useEffect(() => {
