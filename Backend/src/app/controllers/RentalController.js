@@ -3,6 +3,7 @@ const prisma = require('../models/prisma');
 class RentalController {
    createRentalForm = async (req, res, next) => {
       try {
+         console.log(req.body);
          const isExist = await prisma.rental.findUnique({
             where: { address: req.body.address },
          });
@@ -17,6 +18,8 @@ class RentalController {
                endDate: new Date(req.body.endDate),
                price: Number(req.body.rentPrice),
                note: req.body.note,
+
+               //see more here: https://github.com/thanhnguyen662/CW-RentalZ/blob/master/Backend/src/app/controllers/RentalController.js
 
                properties: {
                   create: {
@@ -103,43 +106,20 @@ class RentalController {
       const searchKeyword = req.query.searchKeyword;
       const splitToFullTextSearch =
          searchKeyword.replace(/ /g, ' | ') || undefined;
+
       try {
          const response = await prisma.rental.findMany({
             where: {
                OR: [
                   {
-                     properties: {
-                        some: {
-                           furnitureType: {
-                              search: splitToFullTextSearch,
-                              mode: 'insensitive',
-                           },
-                        },
-                     },
-                  },
-                  {
-                     properties: {
-                        some: {
-                           bedRoom: {
-                              search: splitToFullTextSearch,
-                              mode: 'insensitive',
-                           },
-                        },
-                     },
-                  },
-                  {
-                     properties: {
-                        some: {
-                           propertyType: {
-                              search: splitToFullTextSearch,
-                              mode: 'insensitive',
-                           },
-                        },
-                     },
-                  },
-                  {
                      note: {
-                        search: splitToFullTextSearch,
+                        contains: req.query.searchKeyword,
+                        mode: 'insensitive',
+                     },
+                  },
+                  {
+                     address: {
+                        contains: req.query.searchKeyword,
                         mode: 'insensitive',
                      },
                   },
@@ -149,7 +129,7 @@ class RentalController {
                            extras: {
                               some: {
                                  description: {
-                                    search: splitToFullTextSearch,
+                                    contains: req.query.searchKeyword,
                                     mode: 'insensitive',
                                  },
                               },

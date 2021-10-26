@@ -61,7 +61,7 @@ const Home = () => {
       furnitureType: yup.string().required('Furniture Type is required'),
       bedRoom: yup.string().required('Bed Room is required'),
       rentPrice: yup
-         .number()
+         .number('Rental Price must be Number')
          .integer('Rental Price must be Integer')
          .moreThan(0, 'Price must be greater than 0')
          .required('Price is required'),

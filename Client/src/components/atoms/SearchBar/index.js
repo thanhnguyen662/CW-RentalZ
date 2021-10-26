@@ -15,7 +15,7 @@ const SearchBar = (props) => {
       if (timeout.current) clearTimeout(timeout.current);
       timeout.current = setTimeout(() => {
          const formValues = {
-            searchKeyword: value,
+            searchKeyword: value.trim(),
          };
          handleOnSearch(formValues);
       }, 1000);
